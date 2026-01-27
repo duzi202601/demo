@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="现代化的HTML+JS演示应用">
+    <meta name="author" content="Demo">
+    <title>Demo Application - HTML+JS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>Demo App</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">首页</a></li>
+                <li><a href="#features" class="nav-link">功能</a></li>
+                <li><a href="#demo" class="nav-link">演示</a></li>
+                <li><a href="#about" class="nav-link">关于</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="切换导航菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <!-- 欢迎区域 -->
+        <section id="home" class="section hero">
+            <div class="container">
+                <h2 class="hero-title">欢迎使用现代化 Demo 应用</h2>
+                <p class="hero-subtitle">基于纯 HTML + JavaScript 构建的高性能应用</p>
+                <button class="btn btn-primary" id="get-started-btn">开始使用</button>
+            </div>
+        </section>
+
+        <!-- 功能展示区域 -->
+        <section id="features" class="section features">
+            <div class="container">
+                <h2 class="section-title">核心功能</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>高性能</h3>
+                        <p>优化的代码结构，快速响应</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>响应式设计</h3>
+                        <p>适配各种设备和屏幕尺寸</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>现代界面</h3>
+                        <p>简洁美观的用户界面</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>易于扩展</h3>
+                        <p>模块化的代码结构</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 交互演示区域 -->
+        <section id="demo" class="section demo">
+            <div class="container">
+                <h2 class="section-title">交互演示</h2>
+                
+                <!-- 计数器演示 -->
+                <div class="demo-box">
+                    <h3>计数器</h3>
+                    <div class="counter-display">
+                        <span id="counter-value">0</span>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" id="decrement-btn">-</button>
+                        <button class="btn btn-secondary" id="reset-btn">重置</button>
+                        <button class="btn btn-secondary" id="increment-btn">+</button>
+                    </div>
+                </div>
+
+                <!-- 待办事项列表 -->
+                <div class="demo-box">
+                    <h3>待办事项</h3>
+                    <div class="todo-container">
+                        <form id="todo-form" class="todo-form">
+                            <input 
+                                type="text" 
+                                id="todo-input" 
+                                class="input-field" 
+                                placeholder="添加新任务..."
+                                aria-label="新任务输入框"
+                                required
+                            >
+                            <button type="submit" class="btn btn-primary">添加</button>
+                        </form>
+                        <ul id="todo-list" class="todo-list"></ul>
+                        <div class="todo-stats">
+                            <span>总计: <strong id="total-tasks">0</strong></span>
+                            <span>已完成: <strong id="completed-tasks">0</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 动态内容加载 -->
+                <div class="demo-box">
+                    <h3>动态内容</h3>
+                    <button class="btn btn-primary" id="load-data-btn">加载数据</button>
+                    <div id="data-container" class="data-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于区域 -->
+        <section id="about" class="section about">
+            <div class="container">
+                <h2 class="section-title">关于项目</h2>
+                <div class="about-content">
+                    <p>这是一个使用纯 HTML、CSS 和 JavaScript 构建的现代化演示应用。</p>
+                    <p>项目特点：</p>
+                    <ul class="feature-list">
+                        <li>✓ 语义化的 HTML5 结构</li>
+                        <li>✓ 现代化的 CSS 样式（使用 Flexbox 和 Grid）</li>
+                        <li>✓ 原生 JavaScript（无依赖框架）</li>
+                        <li>✓ 模块化的代码组织</li>
+                        <li>✓ 响应式设计</li>
+                        <li>✓ 无障碍访问支持</li>
+                        <li>✓ 性能优化</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Demo Application. 使用 HTML + JavaScript 构建。</p>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" class="back-to-top" aria-label="回到顶部">
+        ↑
+    </button>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
