@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>白天/黑夜切换效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 1s ease, color 1s ease;
+        }
+
+        .container {
+            transition: background-color 1s ease, box-shadow 1s ease;
+        }
+
+        /* 白天模式 */
+        body.day {
+            background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+            color: #333;
+        }
+
+        /* 黑夜模式 */
+        body.night {
+            background: linear-gradient(180deg, #0c1445 0%, #1a1a2e 100%);
+            color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+        }
+
+        body.day .container {
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        body.night .container {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .icon {
+            font-size: 80px;
+            margin: 30px 0;
+            transition: transform 0.5s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.1);
+        }
+
+        .time-display {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .status {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            opacity: 0.8;
+        }
+
+        .info {
+            font-size: 0.9rem;
+            margin-top: 20px;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        /* 星星效果（夜间） */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        body.night .stars {
+            opacity: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* 云朵效果（白天） */
+        .clouds {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        body.day .clouds {
+            opacity: 1;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(calc(100vw + 100%)); }
+        }
+    </style>
+</head>
+<body class="day">
+    <div class="stars" id="stars"></div>
+    <div class="clouds" id="clouds"></div>
+    
+    <div class="container">
+        <h1>白天/黑夜切换效果</h1>
+        <div class="icon" id="icon" aria-label="白天模式图标">☀️</div>
+        <div class="time-display" id="time" role="timer" aria-live="polite">00:00:00</div>
+        <div class="status" id="status">当前是白天模式</div>
+        <div class="info">
+            页面会根据当前时间自动切换主题<br>
+            白天 (6:00 - 18:00): 明亮主题<br>
+            夜晚 (18:00 - 6:00): 暗色主题
+        </div>
+    </div>
+
+    <script>
+        // 时间阈值常量
+        const DAY_START_HOUR = 6;   // 白天开始时间
+        const DAY_END_HOUR = 18;    // 白天结束时间
+
+        // 创建星星
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // 创建云朵
+        function createClouds() {
+            const cloudsContainer = document.getElementById('clouds');
+            for (let i = 0; i < 5; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'cloud';
+                cloud.style.top = (10 + Math.random() * 30) + '%';
+                cloud.style.width = (100 + Math.random() * 100) + 'px';
+                cloud.style.height = (40 + Math.random() * 30) + 'px';
+                cloud.style.animationDelay = -(Math.random() * 20) + 's';
+                cloud.style.animationDuration = (15 + Math.random() * 10) + 's';
+                cloudsContainer.appendChild(cloud);
+            }
+        }
+
+        // 更新时间和主题
+        function updateTimeAndTheme() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            // 更新时间显示
+            const timeString = 
+                String(hours).padStart(2, '0') + ':' + 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+            document.getElementById('time').textContent = timeString;
+            
+            // 判断是白天还是夜晚
+            const isDay = hours >= DAY_START_HOUR && hours < DAY_END_HOUR;
+            
+            const body = document.body;
+            const icon = document.getElementById('icon');
+            const status = document.getElementById('status');
+            
+            if (isDay) {
+                body.classList.remove('night');
+                body.classList.add('day');
+                icon.textContent = '☀️';
+                icon.setAttribute('aria-label', '白天模式图标');
+                status.textContent = '当前是白天模式';
+            } else {
+                body.classList.remove('day');
+                body.classList.add('night');
+                icon.textContent = '🌙';
+                icon.setAttribute('aria-label', '夜晚模式图标');
+                status.textContent = '当前是夜晚模式';
+            }
+        }
+
+        // 初始化
+        createStars();
+        createClouds();
+        updateTimeAndTheme();
+        
+        // 每秒更新一次
+        setInterval(updateTimeAndTheme, 1000);
+    </script>
+</body>
+</html>
