@@ -1,5 +1,11 @@
 // 导航菜单切换功能
 document.addEventListener('DOMContentLoaded', function() {
+    // 设置当前年份
+    const yearElement = document.getElementById('currentYear');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
 
@@ -79,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // 添加滚动效果 - 导航栏阴影
-    let lastScroll = 0;
     window.addEventListener('scroll', function() {
         const currentScroll = window.pageYOffset;
         const header = document.querySelector('header');
@@ -89,8 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         }
-
-        lastScroll = currentScroll;
     });
 
     // 图库项目点击效果
@@ -106,23 +109,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // 检测触摸设备
     function isTouchDevice() {
         return (('ontouchstart' in window) ||
-            (navigator.maxTouchPoints > 0) ||
-            (navigator.msMaxTouchPoints > 0));
+            (navigator.maxTouchPoints > 0));
     }
 
     // 如果是触摸设备，添加特定的类
     if (isTouchDevice()) {
         document.body.classList.add('touch-device');
-        console.log('检测到触摸设备');
     } else {
         document.body.classList.add('no-touch');
-        console.log('检测到非触摸设备');
     }
-
-    // 记录设备信息（用于调试）
-    console.log('设备信息:');
-    console.log('屏幕宽度:', window.innerWidth);
-    console.log('屏幕高度:', window.innerHeight);
-    console.log('设备像素比:', window.devicePixelRatio);
-    console.log('用户代理:', navigator.userAgent);
 });
