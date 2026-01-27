@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能模拟效果 - Smart Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>智能模拟效果</h1>
+            <p>Interactive Smart Particle Simulation</p>
+        </header>
+        
+        <div class="controls">
+            <button id="toggleGravity" class="btn">切换重力 (Toggle Gravity)</button>
+            <button id="toggleAttraction" class="btn active">切换吸引 (Toggle Attraction)</button>
+            <button id="addParticles" class="btn">添加粒子 (Add Particles)</button>
+            <button id="clearParticles" class="btn">清除 (Clear)</button>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="simulationCanvas"></canvas>
+        </div>
+        
+        <div class="stats">
+            <span>粒子数量 (Particles): <span id="particleCount">0</span></span>
+            <span>FPS: <span id="fps">0</span></span>
+        </div>
+        
+        <div class="instructions">
+            <h3>操作说明 (Instructions)</h3>
+            <ul>
+                <li>移动鼠标与粒子互动 (Move mouse to interact with particles)</li>
+                <li>点击画布添加新粒子 (Click canvas to add new particles)</li>
+                <li>使用按钮切换不同效果 (Use buttons to toggle effects)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="simulation.js"></script>
+</body>
+</html>
