@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="响应式设计演示 - 兼容移动端、平板和桌面设备">
+    <title>响应式设计演示</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <h1>响应式演示</h1>
+                </div>
+                <button class="nav-toggle" id="navToggle" aria-label="切换导航菜单">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#features">特性</a></li>
+                    <li><a href="#gallery">图库</a></li>
+                    <li><a href="#contact">联系</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main>
+        <!-- Hero 区域 -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>欢迎来到响应式设计演示</h2>
+                    <p>本页面展示了现代化的响应式设计，完美兼容移动端、平板和桌面设备</p>
+                    <button class="btn btn-primary">开始探索</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 特性区域 -->
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">响应式特性</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>移动优先</h3>
+                        <p>采用移动优先的设计理念，确保在小屏幕设备上获得最佳体验</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💻</div>
+                        <h3>跨设备兼容</h3>
+                        <p>完美适配手机、平板和桌面设备，提供一致的用户体验</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>流式布局</h3>
+                        <p>使用弹性网格系统，内容随屏幕尺寸自动调整</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>性能优化</h3>
+                        <p>快速加载，流畅交互，为用户提供出色的性能表现</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>可访问性</h3>
+                        <p>遵循无障碍设计标准，让所有用户都能轻松使用</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <h3>现代技术</h3>
+                        <p>使用最新的HTML5、CSS3和响应式设计技术</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 图库区域 -->
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2 class="section-title">响应式图库</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" style="background-color: #FF6B6B;">
+                        <div class="gallery-content">
+                            <h3>图片 1</h3>
+                            <p>响应式图片展示</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" style="background-color: #4ECDC4;">
+                        <div class="gallery-content">
+                            <h3>图片 2</h3>
+                            <p>响应式图片展示</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" style="background-color: #45B7D1;">
+                        <div class="gallery-content">
+                            <h3>图片 3</h3>
+                            <p>响应式图片展示</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" style="background-color: #96CEB4;">
+                        <div class="gallery-content">
+                            <h3>图片 4</h3>
+                            <p>响应式图片展示</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" style="background-color: #FFEAA7;">
+                        <div class="gallery-content">
+                            <h3>图片 5</h3>
+                            <p>响应式图片展示</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" style="background-color: #DFE6E9;">
+                        <div class="gallery-content">
+                            <h3>图片 6</h3>
+                            <p>响应式图片展示</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系区域 -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">联系我们</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>联系信息</h3>
+                        <p>📧 邮箱: demo@example.com</p>
+                        <p>📱 电话: +86 123 4567 8900</p>
+                        <p>📍 地址: 中国，示例城市</p>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" placeholder="请输入您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">消息</label>
+                            <textarea id="message" name="message" rows="5" placeholder="请输入您的消息" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 响应式设计演示. 保留所有权利.</p>
+            <p>完美兼容移动端、平板和桌面设备</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
