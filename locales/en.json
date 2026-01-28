@@ -1,0 +1,33 @@
+{
+  "app": {
+    "name": "Demo Application",
+    "description": "A demonstration project with multi-language support"
+  },
+  "common": {
+    "welcome": "Welcome",
+    "hello": "Hello",
+    "goodbye": "Goodbye",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "messages": {
+    "greeting": "Hello, {name}!",
+    "welcome_message": "Welcome to our application",
+    "language_changed": "Language has been changed to English"
+  },
+  "errors": {
+    "not_found": "Resource not found",
+    "server_error": "Server error, please try again later",
+    "network_error": "Network error, please check your connection"
+  }
+}
