@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Bot 会话</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="bot-avatar">🤖</div>
+            <div class="header-info">
+                <h1>AI 助手</h1>
+                <span class="status">在线</span>
+            </div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages" role="log" aria-live="polite">
+            <div class="message bot-message">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <p>您好！我是 AI 助手，有什么可以帮助您的吗？</p>
+                    <span class="message-time"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-container">
+            <label for="userInput" class="sr-only">输入您的消息</label>
+            <input type="text" id="userInput" class="chat-input" placeholder="输入您的消息..." autocomplete="off">
+            <button id="sendBtn" class="send-btn" aria-label="发送消息">发送</button>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html>
