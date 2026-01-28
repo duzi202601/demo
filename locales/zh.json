@@ -1,0 +1,33 @@
+{
+  "app": {
+    "name": "示例应用",
+    "description": "一个支持多语言的演示项目"
+  },
+  "common": {
+    "welcome": "欢迎",
+    "hello": "你好",
+    "goodbye": "再见",
+    "yes": "是",
+    "no": "否",
+    "ok": "确定",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "search": "搜索",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功"
+  },
+  "messages": {
+    "greeting": "你好，{name}！",
+    "welcome_message": "欢迎使用我们的应用",
+    "language_changed": "语言已切换为中文"
+  },
+  "errors": {
+    "not_found": "资源未找到",
+    "server_error": "服务器错误，请稍后重试",
+    "network_error": "网络错误，请检查您的连接"
+  }
+}
