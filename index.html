@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .content-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        /* 返回顶部按钮样式 */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+            z-index: 1000;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        #scrollToTopBtn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <h1>Demo 页面</h1>
+    
+    <div class="content-section">
+        <h2>第一部分</h2>
+        <p>这是一个示例页面，用于演示"返回顶部"按钮的功能。当页面内容较长时，滚动页面后，页面右下角会出现一个按钮。点击该按钮可以快速返回页面顶部。</p>
+    </div>
+
+    <div class="content-section">
+        <h2>第二部分</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>第三部分</h2>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>第四部分</h2>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>第五部分</h2>
+        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>第六部分</h2>
+        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>第七部分</h2>
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>第八部分</h2>
+        <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat.</p>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="scrollToTopBtn" title="返回顶部" aria-label="返回顶部">↑</button>
+
+    <script>
+        // 配置常量
+        const SCROLL_THRESHOLD = 300; // 显示按钮的滚动阈值（像素）
+        const THROTTLE_DELAY = 100;   // 节流延迟（毫秒）
+
+        // 获取按钮元素
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        // 节流函数，限制滚动事件的触发频率
+        function throttle(func, delay) {
+            let lastCall = 0;
+            return function(...args) {
+                const now = Date.now();
+                if (now - lastCall >= delay) {
+                    lastCall = now;
+                    func.apply(this, args);
+                }
+            };
+        }
+
+        // 处理滚动事件的函数
+        function handleScroll() {
+            if (window.scrollY > SCROLL_THRESHOLD) {
+                scrollToTopBtn.classList.add('show');
+                scrollToTopBtn.removeAttribute('tabindex');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+                scrollToTopBtn.setAttribute('tabindex', '-1');
+            }
+        }
+
+        // 初始化时设置 tabindex
+        scrollToTopBtn.setAttribute('tabindex', '-1');
+
+        // 监听滚动事件（使用节流）
+        window.addEventListener('scroll', throttle(handleScroll, THROTTLE_DELAY));
+
+        // 点击按钮时滚动到顶部
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
