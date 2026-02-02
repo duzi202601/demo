@@ -1,2 +1,2 @@
-# demo
-demo
+# Demo
+A simple demonstration repository.
